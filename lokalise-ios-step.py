@@ -53,9 +53,9 @@ print("\n Verifing the setting of the project...", flush=True)
 keys_total = json_project['statistics']['keys_total']
 print("\n  -> There is %s keys in the project\n" % keys_total, flush=True)
 
-print("\n Verifing %s translations status..." % len(json['keys']), flush=True)
+print("\n Verifing %s translations status..." % len(json_translation['keys']), flush=True)
 
-for key in json['keys']:
+for key in json_translation['keys']:
     for translation in key['translations']:
 	    status = translation['is_unverified']
 	    if status == True:
