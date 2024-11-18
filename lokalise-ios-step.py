@@ -47,6 +47,9 @@ headers = {
 response = requests.get(url, headers=headers)
 
 
+
+print("\n API URL === %s" % url, flush=True)
+print("\n API HEADER === %s" % headers, flush=True)
 print("\n API RESP === %s" % response.text, flush=True)
 
 
