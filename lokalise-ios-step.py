@@ -53,6 +53,12 @@ print("\n Verifing the setting of the project...", flush=True)
 keys_total = json_project['statistics']['keys_total']
 print("\n  -> There is %s keys in the project\n" % keys_total, flush=True)
 
+number_of_page = keys_total / 500
+print("\n Number of page to fetch %s (%s)" % (number_of_page, number_of_page.ceil()), flush=True)
+
+
+
+
 print("\n Verifing %s translations status..." % len(json_translation['keys']), flush=True)
 
 for key in json_translation['keys']:
