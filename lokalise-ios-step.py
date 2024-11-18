@@ -37,25 +37,18 @@ print("\n file_path === %s" % file_path)
 # Get all translations from Lokalise 
 import requests
 
-
-
-lokalise_project_id_2 = "test_ID_34234"
-lokalise_token_2 = "testTOKEN_222"
-
-url = "https://api.lokalise.com/api2/projects/%s/keys?include_comments=0&include_translations=1&pagination=offset&limit=500" % lokalise_project_id_2
+url = "https://api.lokalise.com/api2/projects/%s/keys?include_comments=0&include_translations=1&pagination=offset&limit=500" % lokalise_project_id
 
 headers = {
     "accept": "application/json",
-    "X-Api-Token": "%s" % lokalise_token_2
+    "X-Api-Token": "%s" % lokalise_token
 }
 
 response = requests.get(url, headers=headers)
 
-
 print("\n API URL === %s" % url, flush=True)
 print("\n API HEADER === %s" % headers, flush=True)
 print("\n API RESP === %s" % response.text, flush=True)
-
 
 
 

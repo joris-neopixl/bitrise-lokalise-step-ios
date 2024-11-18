@@ -69,7 +69,6 @@ inputs:
         Your CLI/API token for Lokalise
       is_expand: true
       is_required: true
-      is_sensitive: true
   - lokalise_project_id:
     opts:
       title: "Lokalise Project ID"
@@ -77,7 +76,6 @@ inputs:
         Your project ID for Lokalise
       is_expand: true
       is_required: true
-      is_sensitive: true
   - file_path:
     opts:
       title: "Path to destination"
