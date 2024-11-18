@@ -26,8 +26,9 @@ if exit_code != 0:
 project_root_path = "/Users/vagrant/git"
 lokalise_token = "%s" % os.getenv('lokalise_token')
 lokalise_project_id = "%s" % os.getenv('lokalise_project_id')
+export_format = "%s" % os.getenv('export_format')
+bundle_structure = "%s" % os.getenv('bundle_structure')
 file_path = "%s/%s" % (project_root_path, os.getenv('file_path'))
-
 
 # Get all translations from Lokalise 
 import requests
@@ -76,8 +77,7 @@ if number_of_unverified_key < 0 :
 else:
     print("\n\n ! ! !  VERIFING SUCCESS ! ! ! \n\nAll keys are 'verified', let's continue and update the project with fresh translations :D\n", flush=True)
 
-export_format = "strings"
-bundle_structure = "%LANG_ISO%.lproj/"
+
 lokalise_export_cmd = "lokalise2 file download --token %s --project-id %s --bundle-structure %s --format %s --unzip-to %s" % (lokalise_token, lokalise_project_id, bundle_structure, export_format, file_path)
 print("\n\n -> cmd to execute : %s\n" % lokalise_export_cmd, flush=True)
 os.system(lokalise_export_cmd)

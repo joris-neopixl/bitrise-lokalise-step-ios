@@ -78,6 +78,29 @@ inputs:
       is_expand: true
       is_required: true
       is_sensitive: true
+  - export_format: "strings"
+    opts:
+      title: "Lokalise export format"
+      description: |
+        file format of the translation export.
+        i.e:
+        - json
+        - strings
+        - xml
+      is_expand: true
+      is_required: true
+  - bundle_structure: "%LANG_ISO%.lproj/"
+    opts:
+      title: "Lokalise bundle structure"
+      description: |
+        the bundle structure for the export.
+        i.e:
+        - %LANG_ISO%
+        - %LANG_NAME%
+        - %FORMAT%
+        - %PROJECT_NAME%
+      is_expand: true
+      is_required: true
   - file_path:
     opts:
       title: "Path to destination"
