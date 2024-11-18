@@ -48,8 +48,8 @@ print("\n json parsing === %s" % json['keys'][0], flush=True)
 
 for key in json['keys']:
 	for translation in key['translations']:
-		status = translation['is_unverified']
-	 	print("\n status === %s" % status, flush=True)
+		 status = translation['is_unverified']
+	 	 print("\n status === %s" % status, flush=True)
 
 
 print("""\n\n
