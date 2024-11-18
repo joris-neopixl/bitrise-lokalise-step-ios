@@ -42,14 +42,16 @@ response = requests.get(url, headers=headers)
 # Read & Parse JSON
 json = response.json()
 
+print("\n Verifing translations status...", flush=True)
+
 for key in json['keys']:
     for translation in key['translations']:
 	    status = translation['is_unverified']
 	    if status == True:
-	        print("\n ERROR: SOME KEY(S) (%s) ARE NOT VERIFIED, PLEASE VERIFY ALL KEYS BEFORE CREATING A RELASE" % key['key_name'], flush=True)
-	        os._exit(1337)
+	        print("\n ! ! ! ERROR ! ! ! \n\n: SOME KEY(S) (%s) ARE NOT VERIFIED, PLEASE VERIFY ALL KEYS BEFORE CREATING A RELASE \n \n ! ! ! ERROR ! ! !" % key['key_name']['ios'], flush=True)
+	        os._exit(12)
 
-print("\n All keys have a 'verified' status, let's continue and update the project with fresh translations :D", flush=True)
+print("\n All keys are 'verified', let's continue and update the project with fresh translations :D", flush=True)
 
 print("""\n\n
  ________  __    __  _______  
