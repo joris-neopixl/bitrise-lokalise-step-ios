@@ -54,6 +54,8 @@ number_of_page_ceil = math.ceil(number_of_page)
 
 print("\n  -> Number of page to fetch %s" % (number_of_page_ceil), flush=True)
 
+number_of_unverified_key = 0
+
 for page in range(1, number_of_page_ceil+1):
     url_translations = "https://api.lokalise.com/api2/projects/%s/keys?include_comments=0&include_translations=1&pagination=offset&limit=500&page=%s" % (lokalise_project_id, page)
     response_translation = requests.get(url_translations, headers=headers)
@@ -64,10 +66,17 @@ for page in range(1, number_of_page_ceil+1):
         for translation in key['translations']:
 	        status = translation['is_unverified']
 	        if status == True:
-	            print("\n\n\n ! ! ! ERROR ! ! ! \n\n\n\n\n: SOME KEY(S) (%s) ARE NOT VERIFIED, PLEASE VERIFY ALL KEYS BEFORE CREATING A RELASE \n\n\n\n\n ! ! ! ERROR ! ! !\n\n\n" % key['key_name']['ios'], flush=True)
-	            os._exit(12)
+	        	number_of_unverified_key = number_of_unverified_key + 1
+	        else:
+	            print("\n ALL IS FINE FOR THE PAGE %s" % page, flush=True)
 
-print("\n All keys are 'verified', let's continue and update the project with fresh translations :D", flush=True)
+print("\n -> number_of_unverified_key = %s <-" % number_of_unverified_key, flush=True)
+
+if number_of_unverified_key > 0 :
+    print("\n\n\n ! ! ! ERROR ! ! ! \n\n\n\n\n: SOME KEY(S) (%s) ARE NOT VERIFIED, PLEASE VERIFY ALL KEYS BEFORE CREATING A RELASE \n\n\n\n\n ! ! ! ERROR ! ! !\n\n\n" % number_of_unverified_key, flush=True)
+    os._exit(12)
+else:
+    print("\n\n ! ! !  SUCCESS ! ! ! \n\nAll keys are 'verified', let's continue and update the project with fresh translations :D\n", flush=True)
 
 print("""\n\n
  ________  __    __  _______  
