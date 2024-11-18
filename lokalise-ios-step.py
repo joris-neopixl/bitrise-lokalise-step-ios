@@ -42,14 +42,13 @@ response = requests.get(url, headers=headers)
 # Read & Parse JSON
 json = response.json()
 
-print("\n json parsing === %s" % json, flush=True)
-print("\n json parsing === %s" % json['keys'], flush=True)
-print("\n json parsing === %s" % json['keys'][0], flush=True)
-
 for key in json['keys']:
     for translation in key['translations']:
 	    status = translation['is_unverified']
-	    print("\n status === %s" % status, flush=True)
+	    if status == True
+	        print("\n Verified :check:", flush=True)
+	    else:
+	    	print("\n UNVERIFIED :red_cross:", flush=True)
 
 
 print("""\n\n
