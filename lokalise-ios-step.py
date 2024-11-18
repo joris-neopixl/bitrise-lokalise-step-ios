@@ -70,11 +70,15 @@ for page in range(1, number_of_page_ceil+1):
 
 print("\n -> number_of_unverified_key = %s <-" % number_of_unverified_key, flush=True)
 
-if number_of_unverified_key > 0 :
-    print("\n\n\n ! ! ! ERROR ! ! ! \n\n\n\n\n: SOME KEY(S) (%s) ARE NOT VERIFIED, PLEASE VERIFY ALL KEYS BEFORE CREATING A RELASE \n\n\n\n\n ! ! ! ERROR ! ! !\n\n\n" % number_of_unverified_key, flush=True)
+if number_of_unverified_key < 0 :
+    print("\n\n\n ! ! ! ERROR ! ! ! \n\n\n\n\n: %s KEYS ARE NOT VERIFIED, PLEASE VERIFY ALL KEYS BEFORE CREATING A RELASE \n\n\n\n\n ! ! ! ERROR ! ! !\n\n\n" % number_of_unverified_key, flush=True)
     os._exit(12)
 else:
-    print("\n\n ! ! !  SUCCESS ! ! ! \n\nAll keys are 'verified', let's continue and update the project with fresh translations :D\n", flush=True)
+    print("\n\n ! ! !  VERIFING SUCCESS ! ! ! \n\nAll keys are 'verified', let's continue and update the project with fresh translations :D\n", flush=True)
+
+export_format = "strings"
+lokalise_export_cmd = "lokalise2 --token %s --project-id %s file download --format %s --unzip-to %s" % (lokalise_token, lokalise_project_id, export_format, file_path)
+os.system(lokalise_export_cmd)
 
 print("""\n\n
  ________  __    __  _______  
