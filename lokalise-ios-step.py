@@ -53,8 +53,11 @@ print("\n Verifing the setting of the project...", flush=True)
 keys_total = json_project['statistics']['keys_total']
 print("\n  -> There is %s keys in the project\n" % keys_total, flush=True)
 
+import math
 number_of_page = keys_total / 500
-print("\n Number of page to fetch %s (%s)" % (number_of_page, number_of_page.ceil()), flush=True)
+number_of_page_ceil = math.ceil(number_of_page)
+
+print("\n Number of page to fetch %s" % (number_of_page_ceil), flush=True)
 
 
 
