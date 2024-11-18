@@ -24,8 +24,8 @@ if exit_code != 0:
 
 # Retrieve all user injected variables
 project_root_path = "/Users/vagrant/git"
-lokalise_token = "%s/%s" % (project_root_path, os.getenv('lokalise_token'))
-lokalise_project_id = "%s/%s" % (project_root_path, os.getenv('lokalise_project_id'))
+lokalise_token = "%s" % os.getenv('lokalise_token')
+lokalise_project_id = "%s" % os.getenv('lokalise_project_id')
 file_path = "%s/%s" % (project_root_path, os.getenv('file_path'))
 
 print("\n project_root_path === %s" % project_root_path)
