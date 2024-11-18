@@ -77,7 +77,9 @@ else:
     print("\n\n ! ! !  VERIFING SUCCESS ! ! ! \n\nAll keys are 'verified', let's continue and update the project with fresh translations :D\n", flush=True)
 
 export_format = "strings"
-lokalise_export_cmd = "lokalise2 --token %s --project-id %s file download --format %s --unzip-to %s" % (lokalise_token, lokalise_project_id, export_format, file_path)
+bundle_structure = "%LANG_ISO%.lproj/"
+lokalise_export_cmd = "lokalise2 file download --token %s --project-id %s --bundle-structure %s --format %s --unzip-to %s" % (lokalise_token, lokalise_project_id, bundle_structure, export_format, file_path)
+print("\n\n -> cmd to execute : %s\n" % lokalise_export_cmd, flush=True)
 os.system(lokalise_export_cmd)
 
 print("""\n\n
