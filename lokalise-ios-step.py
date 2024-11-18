@@ -41,7 +41,7 @@ url = "https://api.lokalise.com/api2/projects/%s/keys?include_comments=0&include
 
 headers = {
     "accept": "application/json",
-    "X-Api-Token": lokalise_token
+    "X-Api-Token": "%s" % lokalise_token
 }
 
 response = requests.get(url, headers=headers)
