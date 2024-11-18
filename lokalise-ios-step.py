@@ -28,28 +28,27 @@ lokalise_token = "%s" % os.getenv('lokalise_token')
 lokalise_project_id = "%s" % os.getenv('lokalise_project_id')
 file_path = "%s/%s" % (project_root_path, os.getenv('file_path'))
 
-print("\n project_root_path === %s" % project_root_path)
-print("\n lokalise_token === %s" % lokalise_token)
-print("\n lokalise_project_id === %s" % lokalise_project_id)
-print("\n file_path === %s" % file_path)
-
 
 # Get all translations from Lokalise 
 import requests
-
 url = "https://api.lokalise.com/api2/projects/%s/keys?include_comments=0&include_translations=1&pagination=offset&limit=500" % lokalise_project_id
-
 headers = {
     "accept": "application/json",
     "X-Api-Token": "%s" % lokalise_token
 }
-
 response = requests.get(url, headers=headers)
 
-print("\n API URL === %s" % url, flush=True)
-print("\n API HEADER === %s" % headers, flush=True)
-print("\n API RESP === %s" % response.text, flush=True)
 
+# Read & Parse JSON
+json = response.json()
+
+print("\n json parsing === %s" % json, flush=True)
+print("\n json parsing === %s" % json['keys'], flush=True)
+print("\n json parsing === %s" % json['keys'][0], flush=True)
+print("\n json parsing === %s" % json['keys'].0, flush=True)
+
+ for key in json['keys']:
+ 	print("\n json parsing KEY === %s" % key, flush=True)
 
 
 print("""\n\n
