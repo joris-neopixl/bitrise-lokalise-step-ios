@@ -46,10 +46,10 @@ for key in json['keys']:
     for translation in key['translations']:
 	    status = translation['is_unverified']
 	    if status == True:
-	        print("\n Verified :check:", flush=True)
-	    else:
-	    	print("\n UNVERIFIED :red_cross:", flush=True)
+	        print("\n ERROR: SOME KEY(S) (%s) ARE NOT VERIFIED, PLEASE VERIFY ALL KEYS BEFORE CREATING A RELASE" % key['key_name'], flush=True)
+	    	os._exit(1337)
 
+print("\n All keys have a 'verified' status, let's continue and update the project with fresh translations :D", flush=True)
 
 print("""\n\n
  ________  __    __  _______  
