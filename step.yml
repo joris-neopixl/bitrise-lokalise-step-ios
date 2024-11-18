@@ -13,9 +13,9 @@ summary: |
   Manage all lokalization from Lokalise
 description: |
   This step run a python script to test if all localization from Lokalise is ready. If it's ready, update it localy.
-website: https://git.smile.fr/neopixl/lokalise-x-bitrise
-source_code_url: https://git.smile.fr/neopixl/lokalise-x-bitrise
-support_url: https://git.smile.fr/neopixl/lokalise-x-bitrise/-/issues
+website: https://github.com/joris-neopixl/bitrise-lokalise-step-ios
+source_code_url: https://github.com/joris-neopixl/bitrise-lokalise-step-ios
+support_url: https://github.com/joris-neopixl/bitrise-lokalise-step-ios
 host_os_tags:
   - osx-10.10
 #  - ubuntu-16.04
