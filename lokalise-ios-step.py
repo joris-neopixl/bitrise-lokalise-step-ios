@@ -60,15 +60,13 @@ for page in range(1, number_of_page_ceil+1):
     url_translations = "https://api.lokalise.com/api2/projects/%s/keys?include_comments=0&include_translations=1&pagination=offset&limit=500&page=%s" % (lokalise_project_id, page)
     response_translation = requests.get(url_translations, headers=headers)
     json_translation = response_translation.json()
-    print("\n Verifing %s translations status" % len(json_translation['keys']), flush=True)
+    print("\n Verifing %s translations status for page %s" % (len(json_translation['keys'], page)), flush=True)
 
     for key in json_translation['keys']:
         for translation in key['translations']:
 	        status = translation['is_unverified']
 	        if status == True:
 	        	number_of_unverified_key = number_of_unverified_key + 1
-	        else:
-	            print("\n ALL IS FINE FOR THE PAGE %s" % page, flush=True)
 
 print("\n -> number_of_unverified_key = %s <-" % number_of_unverified_key, flush=True)
 
