@@ -45,7 +45,7 @@ json = response.json()
 for key in json['keys']:
     for translation in key['translations']:
 	    status = translation['is_unverified']
-	    if status == 'True'
+	    if status == True:
 	        print("\n Verified :check:", flush=True)
 	    else:
 	    	print("\n UNVERIFIED :red_cross:", flush=True)
