@@ -40,36 +40,32 @@ headers = {
 url_project = "https://api.lokalise.com/api2/projects/%s" % lokalise_project_id
 response_project = requests.get(url_project, headers=headers)
 
-url_translations = "https://api.lokalise.com/api2/projects/%s/keys?include_comments=0&include_translations=1&pagination=offset&limit=500&page=1" % lokalise_project_id
-response_translation = requests.get(url_translations, headers=headers)
-
-
 # Read & Parse JSON
 json_project = response_project.json()
-json_translation = response_translation.json()
 
 print("\n Verifing the setting of the project...", flush=True)
 
 keys_total = json_project['statistics']['keys_total']
-print("\n  -> There is %s keys in the project\n" % keys_total, flush=True)
+print("\n  -> There is %s keys in the project" % keys_total, flush=True)
 
 import math
 number_of_page = keys_total / 500
 number_of_page_ceil = math.ceil(number_of_page)
 
-print("\n Number of page to fetch %s" % (number_of_page_ceil), flush=True)
+print("\n  -> Number of page to fetch %s" % (number_of_page_ceil), flush=True)
 
+for page in range(1, number_of_page_ceil+1):
+    url_translations = "https://api.lokalise.com/api2/projects/%s/keys?include_comments=0&include_translations=1&pagination=offset&limit=500&page=%s" % (lokalise_project_id, page)
+    response_translation = requests.get(url_translations, headers=headers)
+    json_translation = response_translation.json()
+    print("\n Verifing %s translations status" % len(json_translation['keys']), flush=True)
 
-
-
-print("\n Verifing %s translations status..." % len(json_translation['keys']), flush=True)
-
-for key in json_translation['keys']:
-    for translation in key['translations']:
-	    status = translation['is_unverified']
-	    if status == True:
-	        print("\n\n\n ! ! ! ERROR ! ! ! \n\n\n\n\n: SOME KEY(S) (%s) ARE NOT VERIFIED, PLEASE VERIFY ALL KEYS BEFORE CREATING A RELASE \n\n\n\n\n ! ! ! ERROR ! ! !\n\n\n" % key['key_name']['ios'], flush=True)
-	        os._exit(12)
+    for key in json_translation['keys']:
+        for translation in key['translations']:
+	        status = translation['is_unverified']
+	        if status == True:
+	            print("\n\n\n ! ! ! ERROR ! ! ! \n\n\n\n\n: SOME KEY(S) (%s) ARE NOT VERIFIED, PLEASE VERIFY ALL KEYS BEFORE CREATING A RELASE \n\n\n\n\n ! ! ! ERROR ! ! !\n\n\n" % key['key_name']['ios'], flush=True)
+	            os._exit(12)
 
 print("\n All keys are 'verified', let's continue and update the project with fresh translations :D", flush=True)
 
