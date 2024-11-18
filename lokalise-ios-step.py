@@ -46,8 +46,8 @@ print("\n json parsing === %s" % json, flush=True)
 print("\n json parsing === %s" % json['keys'], flush=True)
 print("\n json parsing === %s" % json['keys'][0], flush=True)
 
- for key in json['keys']:
- 	print("\n json parsing KEY === %s" % key, flush=True)
+for key in json['keys']:
+	 print("\n json parsing KEY === %s" % key, flush=True)
 
 
 print("""\n\n
