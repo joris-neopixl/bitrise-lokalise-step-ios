@@ -51,7 +51,7 @@ json_translation = response_translation.json()
 print("\n Verifing the setting of the project...", flush=True)
 
 keys_total = json_project['statistics']['keys_total']
-print("\n      -> There is %s keys in the project\n", % keys_total ) flush=True)
+print("\n      -> There is %s keys in the project\n", % keys_total flush=True)
 
 print("\n Verifing %s translations status...", % len(json['keys']) flush=True)
 
