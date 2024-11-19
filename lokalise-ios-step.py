@@ -71,7 +71,7 @@ for page in range(1, number_of_page_ceil+1):
 
 print("\n -> number_of_unverified_key = %s <-" % number_of_unverified_key, flush=True)
 
-if number_of_unverified_key < 0 :
+if number_of_unverified_key > 0 :
     print("\n\n\n ! ! ! ERROR ! ! ! \n\n\n\n\n: %s KEYS ARE NOT VERIFIED, PLEASE VERIFY ALL KEYS BEFORE CREATING A RELASE \n\n\n\n\n ! ! ! ERROR ! ! !\n\n\n" % number_of_unverified_key, flush=True)
     os._exit(12)
 else:
